@@ -123,16 +123,29 @@ namespace BaiKiemTra3
             string query = "SELECT maSP, tenSP, tenLoai, soLuong, donGia, 'Xóa' as [Xóa] FROM SanPham JOIN LoaiSanPham ON LoaiSanPham.maLoai = SanPham.loaiSP where SanPham.maSP LIKE '%"+ txtTimKiem.Text.ToString() + "%' OR SanPham.tenSP LIKE N'%" + txtTimKiem.Text.ToString() + "%'";
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader dr = cmd.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(dr);
-            DsSanPham.DataSource = dt;
-            for (int i = 0; i < DsSanPham.Rows.Count; i++)
+            if (dr.Read())
             {
-                DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                DataGridViewLinkCell linkCell1 = new DataGridViewLinkCell();
-                DsSanPham[5, i] = linkCell;
-                DsSanPham[6, i] = linkCell1;
+                DataTable dt = new DataTable();
+                dt.Load(dr);
+                DsSanPham.DataSource = dt;
+                for (int i = 0; i < DsSanPham.Rows.Count; i++)
+                {
+                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                    DataGridViewLinkCell linkCell1 = new DataGridViewLinkCell();
+                    DsSanPham[5, i] = linkCell;
+                    DsSanPham[6, i] = linkCell1;
+                }
+            } else
+            {
+                dr.Close();
+                MessageBox.Show("Không tìm thấy sản phẩm nào");
             }
+            
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            HienThi();
         }
     }
 }

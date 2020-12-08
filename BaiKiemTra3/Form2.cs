@@ -49,9 +49,46 @@ namespace BaiKiemTra3
 
             txtMaSP.Text = maSP;
             txtTenSP.Text = tenSP;
-            cbnLoaiSP.SelectedItem = loaiSP;
+            cbnLoaiSP.Text = loaiSP;
             txtSoLuong.Text = soLuong;
             txtDonGia.Text = donGia;
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            double donGia;
+            try
+            {
+                donGia = Convert.ToDouble(txtDonGia.Text);
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show("Bạn nhập sai format");
+                return;
+            }
+
+            string SqlINSERT = "update SanPham set tenSP = N'" + txtTenSP.Text + "', loaiSP = '" + cbnLoaiSP.SelectedValue.ToString() + "', soLuong = " + Convert.ToInt64(txtSoLuong.Text) + ", donGia = " + Convert.ToDouble(txtDonGia.Text) + " where SanPham.maSP = '"+maSP+"'";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(SqlINSERT, con);
+                int dr = cmd.ExecuteNonQuery();
+
+                if (dr != 0)
+                {
+                    Close();
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show("Sửa thất bại");
+                return;
+            }
         }
     }
 }

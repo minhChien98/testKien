@@ -38,6 +38,8 @@
             this.cbnLoaiSP = new System.Windows.Forms.ComboBox();
             this.txtMaSP = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtSoLuong
@@ -110,6 +112,7 @@
             // 
             // txtMaSP
             // 
+            this.txtMaSP.Enabled = false;
             this.txtMaSP.Location = new System.Drawing.Point(376, 112);
             this.txtMaSP.MaxLength = 4;
             this.txtMaSP.Multiline = true;
@@ -126,11 +129,33 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Mã SP";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(247, 377);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Hủy";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(430, 377);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 23;
+            this.btnEdit.Text = "Sửa";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtSoLuong);
             this.Controls.Add(this.txtDonGia);
             this.Controls.Add(this.label5);
@@ -161,5 +186,7 @@
         private System.Windows.Forms.ComboBox cbnLoaiSP;
         private System.Windows.Forms.TextBox txtMaSP;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
